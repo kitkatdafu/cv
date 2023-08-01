@@ -1,29 +1,17 @@
-name: Build and Publish PDF
-
-on:
-  push:
-    branches: [main]
-
+name: Build LaTeX document
+on: [push]
 jobs:
   build_latex:
     runs-on: ubuntu-latest
     steps:
-
-      - name: Checkout repo
-        uses: actions/checkout@v2
-
-      - name: Build PDF
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+      - name: Compile LaTeX document
         uses: xu-cheng/latex-action@v2
         with:
           root_file: cv-reid.tex
-
-      - name: Publish PDF
-        uses: appleboy/scp-action@v0.1.4
+      - name: Upload PDF file
+        uses: actions/upload-artifact@v3
         with:
-          host: ${{ secrets.SSH_HOST }}
-          username: ${{ secrets.SSH_USERNAME }}
-          key: ${{ secrets.SSH_KEY }}
-          passphrase: ${{ secrets.SSH_KEY_PASSPHRASE }}
-          source: "cv-reid.pdf"
-          target: "~/public_html/share"
-          use_insecure_cipher: true
+          name: PDF
+          path: cv-reid.pdf
