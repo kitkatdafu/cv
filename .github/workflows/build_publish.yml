@@ -19,5 +19,5 @@ jobs:
           destination_repo: 'kitkatdafu/ychen878.github.io'
           destination_folder: 'themes/simple/static'
           user_email: 'mrr1vfe@gmail.com'
-          user_name: 'ychen878'
+          user_name: 'kitkatdafu'
           commit_message: 'Update CV'
