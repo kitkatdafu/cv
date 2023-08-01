@@ -10,8 +10,14 @@ jobs:
         uses: xu-cheng/latex-action@v2
         with:
           root_file: cv-reid.tex
-      - name: Release
-        uses: softprops/action-gh-release@v1
-        if: startsWith(github.ref, 'refs/tags/')
+      - name: Push PDF file
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
         with:
-          files: cv-reid.pdf
+          source_file: 'cv-reid.pdf'
+          destination_repo: 'kitkatdafu/ychen878.github.io'
+          destination_folder: 'themes/simple/static'
+          user_email: 'mrr1vfe@gmail.com'
+          user_name: 'mrr1vfe'
+          commit_message: 'Update CV'
