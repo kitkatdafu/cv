@@ -1,0 +1,226 @@
+%!TeX program = pdflatex
+% Geoff Boeing's Curriculum Vitae
+% Email: boeing@usc.edu
+% Web: https://geoffboeing.com/
+% Repo: https://github.com/gboeing/cv
+
+\documentclass[11pt,letterpaper]{report}
+
+\usepackage[T1]{fontenc} % output T1 font encoding (8-bit) for accented characters as single glyph
+\usepackage{palatino}
+
+\usepackage[strict,autostyle]{csquotes} % smart and nestable quote marks
+\usepackage[USenglish]{babel} % regionalize hyphens, quote marks, etc automatically
+\usepackage{microtype}% improve text appearance with kerning, etc
+\usepackage{datetime} % enable formatting of date output
+\usepackage{tabto}    % make nice tabbing
+\usepackage{hyperref} % enable hyperlinks and pdf metadata
+\usepackage{geometry} % manually set page margins
+\usepackage{enumitem} % enumerate with [resume] option
+\usepackage{titlesec} % allow custom section fonts
+\usepackage{setspace} % custom line spacing
+
+% what is your name?
+\newcommand{\myname}{Yi Chen}
+
+% select default typefaces
+\usepackage{ebgaramond} % document's serif typeface
+\usepackage{palatino}    % document's sans serif typeface
+
+% how far to tab for list items with left-aligned date: different fonts need different widths
+\newcommand{\listtabwidth}{1.7cm}
+
+% define font to use as document's title
+\newcommand{\namefont}[1]{{\normalfont\bfseries\Huge{#1}}}
+
+% set section heading fonts and before/after spacing
+\SetTracking{encoding=*, family=\sfdefault}{30} % increase sans serif headings tracking
+\titleformat{\section}{\normalfont\normalsize\bfseries}{}{}{}{}
+\titlespacing{\section}{0pt}{30pt plus 4pt minus 4pt}{8pt plus 2pt minus 2pt}
+
+% set subsection heading fonts and before/after spacing
+\titleformat{\subsection}{\normalfont\footnotesize\bfseries}{}{}{}{}
+\titlespacing{\subsection}{0pt}{16pt plus 4pt minus 4pt}{4pt plus 2pt minus 2pt}
+
+% set page margins (assumes letter paper)
+\geometry{body={6.5in, 9.0in},
+    left=1.0in,
+    top=1.0in}
+
+% prevent paragraph indentation
+\setlength\parindent{0em}
+
+% set line spacing
+\setstretch{0.9}
+
+% define space between list items
+\newcommand{\listitemspace}{0.25em}
+
+% make unordered lists without bullets and use compact spacing
+\renewenvironment{itemize}
+{\begin{list}{}{\setlength{\leftmargin}{0em}
+                \setlength{\parskip}{0em}
+                \setlength{\itemsep}{\listitemspace}
+                \setlength{\parsep}{\listitemspace}}}
+{\end{list}}
+
+% make tabbed lists so content is left-aligned next to years
+\TabPositions{\listtabwidth}
+\newlist{tablist}{description}{3}
+\setlist[tablist]{leftmargin=\listtabwidth,
+    labelindent=0em,
+    topsep=0em,
+    partopsep=0em,
+    itemsep=\listitemspace,
+    parsep=\listitemspace,
+    font=\normalfont}
+
+% print only the month and year when using \today
+\newdateformat{monthyeardate}{\monthname[\THEMONTH] \THEYEAR}
+
+% define hyperlink appearance and metadata for pdf properties
+\hypersetup{
+    colorlinks  = true,
+    urlcolor    = black,
+    citecolor   = black,
+    linkcolor   = black,
+    pdfauthor   = {\myname},
+    pdfkeywords = {crowdsourcing, optimization, preference learning},
+    pdftitle    = {\myname: Curriculum Vitae},
+    pdfsubject  = {Curriculum Vitae},
+    pdfpagemode = UseNone
+}
+
+\begin{document}
+    \raggedright{}
+
+    % display your name as the document title
+    \namefont{\myname}
+
+    % affiliation and contact info blocks
+    \vspace{1em}
+    \begin{minipage}[t]{0.700\textwidth}
+        % current primary affiliation, left-aligned        
+        Advisor: \href{https://ramyakv.github.io/}{Ramya Korlakai Vinayak} \\
+        Department of Electrical and Computer Engineering \\
+        University of Wisconsin-Madison
+    \end{minipage}
+    \begin{minipage}[t]{0.295\textwidth}
+        % contact info details, right-aligned
+        \flushright{}
+        \href{mailto:reid@deepneural.network}{reid@deepneural.network} \\
+        +1 608 630 4644 \\
+        \href{https://www.deepneural.network/}{deepneural.network}
+    \end{minipage}
+
+
+    \section*{Education}
+
+    \begin{tablist}
+
+        \item[Ph.D.]  \tab{} Electrical and Computer Engineering, University of Wisconsin-Madison, 2022-now
+        \item[B.A.]  \tab{} Computer Sciences \textit{Honors in Major}, University of Wisconsin-Madison, 2019-2022
+        \item[B.A.]  \tab{} Mathematics, University of Wisconsin-Madison, 2019-2022
+
+    \end{tablist}
+
+
+
+    \section*{Research Areas}
+
+    \begin{itemize}
+        \item Crowdsourcing and data labeling: efficiently transferring knowledge from humans to machines
+        \item Preference learning: learning the distribution of human preferences
+        \item Factuality: mitigating hallucinations and ensuring trustworthy AI responses
+        \item Alignment: aligning the foundation models with human values
+    \end{itemize}    
+
+    \section*{Conference Publications}
+    
+    \begin{tablist}
+
+        \item[2025]  \tab{} Tatli, G., \textbf{Chen, Y.}, Mason， B., Nowak, R. D., Vinayak, R. K., \enquote{Metric Learning in an RKHS.}  \textit{The 41st Conference on Uncertainty in Artificial Intelligence (UAI 2025)}
+        
+        \item[2025]  \tab{} Vishwakarma, H., \textbf{Chen, Y.}, Namburi, S.S.S., Tay, S.J., Vinayak, R. K., Sala, F., \enquote{Rethinking Confidence and Thresholds in Pseudolabeling-based SSL.}  \textit{Forty-second International Conference on Machine Learning (ICML 2025)}
+
+
+        \item[2025]  \tab{} \textbf{Chen, Y.} and Vinayak, R. K., \enquote{Query Design for Crowdsourced Clustering: Effect of Cognitive Overload and Contextual Bias.}  \textit{The Web Conference 2025 (TheWebConf 2025)} [Oral]
+    
+        \item[2025] \tab{}Chen, D., \textbf{Chen, Y.}, Rege, A. and Vinayak, R. K. \enquote{PAL: Pluralistic Alignment Framework for Learning from Heterogeneous Preferences.}. \textit{The Thirteenth International Conference on Learning Representations (ICLR 2025)} 
+        
+        \item[2024] \tab{}Vishwakarma, H., \textbf{Chen, Y.}, Tay, S. J., Namburi, S. S. S., Sala, F., and Vinayak, R. K. \enquote{Pearls from Pebbles: Improved Confidence Functions for Auto-labeling.}. \textit{The Thirty-Eighth Annual Conference on Neural Information Processing Systems (NeurIPS 2024)}
+
+        \item[2024] \tab{}Tatli, G., \textbf{Chen, Y.}, and Vinayak, R. K. \enquote{Learning Populations of Preferences via Pairwise Comparison Queries.}. \textit{Proceedings of The 26th International Conference on Artificial Intelligence and Statistics (AISTATS 2024)}
+
+        \item[2023] \tab{}\textbf{Chen, Y.}, Vinayak, R. K., and Hassibi, B. \enquote{Crowdsourced Clustering via Active Querying: Practical Algorithm with Theoretical Guarantees.} \textit{The Eleventh AAAI Conference on Human Computation and Crowdsourcing (HCOMP 2023)}
+
+    \end{tablist}
+
+    \section*{Workshop Publications}
+    
+    \begin{tablist}
+
+
+        \item[2024]  \tab{} \textbf{Chen, Y.} and Vinayak, R. K., \enquote{Query Design for Crowdsourced Clustering: Effect of Cognitive Overload and Contextual Bias.} \textit{Workshop on Models of Human Feedback for AI Alignment (ICML 2024)}
+
+        \item[2023] \tab{}Tatli, G., \textbf{Chen, Y.}, and Vinayak, R. K. \enquote{Learning Populations of Preferences via Pairwise Comparison Queries} \textit{MFPL Workshop at the 40th International Conference on Machine Learning (ICML 2023)}
+
+        \item[2023] \tab{}\textbf{Chen, Y.}, Vinayak, R. K., and Hassibi, B. \enquote{Crowdsourced Clustering via Active Querying: Practical Algorithm with Theoretical Guarantees.} \textit{AI \& HCI Workshop at the 40th International Conference on Machine Learning (ICML 2023)}
+
+        \item[2023] \tab{}Tatli, G., \textbf{Chen, Y.}, and Vinayak, R. K. \enquote{Learning Preference Distributions From Pairwise Comparisons.} \textit{9th International Workshop on Computational Social Choice (COMSOC 2023)}
+
+    \end{tablist}
+
+    \section*{Experiences}
+
+    \begin{tablist}
+
+    \item[Graduate Research Assistant] \tab{}
+        Identified drawbacks in existing clustering methods and proposed solutions to these shortcomings. Investigated state-of-the-art methods through an extensive literature review. Implemented methods for enumerating polytopes in a high-dimensional setting.
+    \item[Project Assistant] \tab{} \newline
+        Participated in designing queries and developing GUI for crowdsourcing experiments. Analyzed the features of a large-scale medical dataset. Authored programs to automate the proof of a vast set of high-order polynomial inequalities.
+    \item[CS540, Introduction to Artificial Intelligence Peer Mentor] \tab{}
+        Assisted students with Artificial Intelligence course homework and responded to AI and Python-related questions on Piazza, dedicating 6 to 7 hours weekly to support students daily. Provided assistance with code debugging and imparted in-depth knowledge regarding neural network fundamentals to reinforce students' understanding. Organized one-on-one study sessions to aid students with programming assignments.
+    \item[Note Taker] \tab{} \newline
+      Developed detailed and accurate class notes, emphasizing essential aspects for clarity. Ensured that a legible copy of these notes was uploaded to the McBurney Center’s website in PDF format within 24 hours of each class.
+    \item[Undergraduate Research Assistant] \tab{}
+      Designed and implemented crowd clustering algorithms, conducting tests and simulations to validate results. Interpreted research papers and executed algorithms as described within them using Python and JavaScript.
+    \item[Web Developer at Coding for Good] \tab{}
+      Enhanced code design and eradicated redundancy through refactoring, optimizing the code for potential future reuse. Leveraged EJS and Node.js in the development of both front-end and back-end of the New-Event-Section. Utilized HTML, CSS, JS, and jQuery to design and implement a vertical cover-flow slideshow.
+    \item[Spanish Tutor at Greater University Tutoring Service] \tab{}
+      Prepared coursework and specific topics for beginners and intermediate-level students. Assisted students in understanding grammar by explaining how to construct certain syntactic structures. Conducted exercises to improve students' oral expression skills.
+    \end{tablist}
+
+    \section*{Service}
+    Served as reviewer for TheWebConf 2025, ICLR 2025, NeurIPS 2024 Workshop on Pluralistic Alignment, ICML 2024 Workshop on Theoretical Foundations of Foundation Models, and ICML 2024 Workshop on Models of Human Feedback for AI Alignment.
+
+    \section*{(Programming) Language Skills}
+
+    I am (perhaps was now) proficient in Java and C, with Python being my primary language for research purposes. I appreciate the typing systems in Rust and Haskell. I utilize AWS Lambda, AWS S3, React, Node.js, and MongoDB to execute various crowdsourcing experiments. I learned about high-performance computing in CUDA. My native language is Mandarin Chinese, and I am fluent in English. I also have proficiency in Spanish, sufficient to order food in a Mexican restaurant.
+
+    \section*{Projects}
+
+    \begin{tablist}
+
+    \item[A Single Shot MultiBox Detector Based Handwritten Formula Detector] \tab{}
+        Course project for CS539, Introduction to Artificial Neural Networks. Successfully created and annotated handwritten dataset to train a neural network architecture called ScanSSD to apply architecture to handwritten formula detection.
+    \item[Understanding, Analysis, and Comparison of Convolutional Neural Network Architecture] \tab{}
+        Course project for CS532, Matrix Methods in Machine Learning. Organized and worked within a team of 3 students. Read several conference papers over the topic of convolutional neural networks. Wrote a report that summarized the main concepts of these articles.
+    \item[TapWar] \tab{} \newline
+        A two-player game with 50K downloads on App Store. Player who taps faster in the game is the winner. In this project, I learned how to rotate UILabel.
+    \item[Mogicians Manual - iOS Version] \tab{}
+      Proficiently transplanted the Android version of App to the iOS version. Implemented the user interface code only with Swift without a storyboard. Utilized cocoapods to install a third-party library to display GIF images. Integrated AVFoundation framework for audio function. Available on the GitHub. (Not available on App Store due to some technicalities.)
+    \item[Sync SH] \tab{} \newline
+      Developed an iOS app during high school for the management of mathematics homework. Learned the function of pushing notifications in iOS. Utilized a framework same as Parse to upload and notify about homework.
+    \item[ChanGE] \tab{} \newline
+      Recoded a Puzzle Game from Objective–C to Swift after the announcement of Swift. Developed a countdown mechanism with NSTimer/Timer. Implemented the animation of Timer with UIView animate function.
+    \end{tablist}
+
+
+    % display today's date as Month Year after a vertical space below the end of the text
+    \begin{center}
+        \vfill
+        Updated \monthyeardate\today
+    \end{center}
+
+\end{document}

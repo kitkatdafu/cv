@@ -1,0 +1,23 @@
+name: Build LaTeX document
+on: [push]
+jobs:
+  build_latex:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Set up Git repository
+        uses: actions/checkout@v3
+      - name: Compile LaTeX document
+        uses: xu-cheng/latex-action@v2
+        with:
+          root_file: cv-reid.tex
+      - name: Push PDF file
+        uses: dmnemec/copy_file_to_another_repo_action@main
+        env:
+          API_TOKEN_GITHUB: ${{ secrets.API_TOKEN_GITHUB }}
+        with:
+          source_file: 'cv-reid.pdf'
+          destination_repo: 'kitkatdafu/ychen878.github.io'
+          destination_folder: 'themes/simple/static'
+          user_email: 'mrr1vfe@gmail.com'
+          user_name: 'kitkatdafu'
+          commit_message: 'Update CV'
