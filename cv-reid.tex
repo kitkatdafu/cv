@@ -12,6 +12,7 @@
 \usepackage[hidelinks]{hyperref}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{2pt}
+\interlinepenalty=10000
 \titleformat{\section}{\large\bfseries}{}{0pt}{}[\titlerule]
 \titlespacing*{\section}{0pt}{9pt}{5pt}
 \titlespacing*{\subsection}{0pt}{9pt}{5pt}
@@ -24,21 +25,21 @@
 \fancyhf{}
 \fancyhead[L]{\small Yi Chen}
 \fancyhead[R]{\small Curriculum Vitae}
-\fancyfoot[L]{\small September 2026}
+\fancyfoot[L]{\small October 2026}
 \fancyfoot[R]{\small\thepage}
 \renewcommand{\headrulewidth}{0pt}
 \setlength{\headheight}{14pt}
 \fancypagestyle{firstpage}{
   \fancyhf{}
-  \fancyfoot[L]{\small September 2026}
+  \fancyfoot[L]{\small October 2026}
   \fancyfoot[R]{\small\thepage}
   \renewcommand{\headrulewidth}{0pt}
 }
 \hypersetup{
   pdfauthor={Yi Chen},
   pdftitle={Yi Chen: Curriculum Vitae},
-  pdfsubject={Bloomberg Data Science Ph.D. Fellowship},
-  pdfkeywords={trustworthy AI, agent evaluation, LLM judges, retrieval-augmented generation, human feedback, data-centric AI}
+  pdfsubject={NVIDIA Graduate Fellowship},
+  pdfkeywords={factuality verification, large language models, compute-efficient verification, retrieval-augmented generation, conformal factuality, masked-diffusion language models, LLM and VLM judges, agent evaluation, auto-labeling, human feedback, pluralistic alignment}
 }
 
 \begin{document}
@@ -53,8 +54,43 @@ Expected graduation: 2028\enspace$\vert$\enspace Advisor: \href{https://ramyakv.
 \href{https://github.com/kitkatdafu}{github.com/kitkatdafu}\enspace$\vert$\enspace
 \href{https://scholar.google.com/citations?user=QoO6pMEAAAAJ}{Google Scholar}
 
-\section*{Research Focus}
-\textbf{Trustworthy AI for retrieval and agents:} Reliable and efficient evaluation of retrieval-augmented generation (RAG) and agentic systems, including factuality verification, conformal risk control under distribution shift, and LLM judges; human feedback, data-centric learning, and pluralistic alignment.
+\section*{Research Overview}
+\textbf{Reliable, compute-efficient factuality verification for LLMs:} Conformal factuality and risk control for RAG under distribution shift; masked-diffusion and lightweight entailment verifiers; agent evaluation with LLM and VLM judges. Related threads: confidence scores for auto-labeling, human feedback, and pluralistic alignment.\par
+\textbf{Publication record:} Seven conference papers at NeurIPS, ICML, ICLR, WWW (oral), AISTATS, UAI, and HCOMP\@; first or co-first author on three (ICML, WWW, HCOMP); plus a first-author 2026 preprint.
+
+\section*{Research Experience}
+\entry{Conformal Factuality for RAG-based LLMs: Robustness and Efficiency Analysis}{2025--2026}
+\begin{itemize}
+\item \textit{arXiv 2026 (first author); ICML Workshop 2025:} Led a study across three benchmarks and multiple model families; found that lightweight entailment verifiers match or outperform LLM confidence scorers while requiring over 100$\times$ fewer FLOPs.
+\item Introduced informativeness-aware metrics; diagnosed vacuous outputs at high factuality levels and the fragility of conformal filtering under distribution shifts and distractors.
+\end{itemize}
+\entry{PALIMPSEST --- Efficient Factuality Verification with Masked-Diffusion LMs}{2026--present}
+\begin{itemize}
+\item Proposed a masked-diffusion verifier that masks entity spans and scores length-normalized token recovery; designed reference-grounded and reference-free evaluations against trained checkers and token-probability baselines.
+\item Designed a matched cloze comparison of a masked-diffusion language model (Dream-7B) and an autoregressive LLM (Qwen2.5-7B) to isolate reconstruction-based verification behavior; ongoing work extends the approach to conformal factuality under generator shift.
+\end{itemize}
+\entry{Confidence Scores for Reliable Data Annotation and Pseudolabeling}{2024--2025}
+\begin{itemize}
+\item \textit{NeurIPS 2024:} Co-developed confidence functions and thresholding methods for automated labeling under explicit error constraints, improving coverage by up to 60\% over calibration baselines while holding error below 5\%.
+\item \textit{ICML 2025 (equal contribution):} Connected automated-label quality and quantity through a coverage--error objective in pseudolabeling-based semi-supervised learning.
+\end{itemize}
+\entry{Human Feedback, Preference Learning, and Pluralistic Alignment}{2023--2025}
+\begin{itemize}
+\item \textit{ICLR 2025:} Co-developed PAL, a pluralistic alignment framework that learns shared structure and individual differences from heterogeneous preferences.
+\item \textit{WWW 2025 (oral):} Designed crowdsourced clustering studies of cognitive overload and contextual bias to understand how question format changes annotation quality.
+\item \textit{AISTATS 2024; UAI 2025:} Studied identifiability and recovery of preference distributions from limited pairwise comparisons, and nonlinear metric learning in an RKHS, respectively.
+\item \textit{HCOMP 2023:} Developed active querying for crowdsourced clustering with theoretical recovery guarantees and evaluation on human-generated data.
+\end{itemize}
+
+\section*{Industry Experience}
+\entry{Meta --- Core Ads Growth Engineering}{2026}
+Software Engineer Intern, Machine Learning (Summer 2026)\\
+Part-time Student Researcher (Fall 2026)
+\begin{itemize}
+\item \textbf{Ad Creative Agent (Jun--Jul 2026):} Designed and shipped a production multi-turn, multi-model agent for generating, editing, and iterating on ad creatives from advertiser briefs.
+\item Architected a ReAct orchestrator with seven tools and four specialized advisors, integrating diffusion-based generation and editing, a vision-language critic, and a learned performance scorer.
+\item Developed supervised fine-tuning and model-serving infrastructure; built a VLM-as-judge evaluation suite with metrics, dashboards, and mock-based tests.
+\end{itemize}
 
 \section*{Education}
 \textbf{University of Wisconsin--Madison}
@@ -65,29 +101,6 @@ Expected graduation: 2028\enspace$\vert$\enspace Advisor: \href{https://ramyakv.
 \item B.A., Mathematics \hfill 2019--2022
 \end{itemize}
 
-\section*{Current Research}
-\entry{Conformal Factuality for Retrieval-Augmented Generation (RAG)}{2025--2026}
-\begin{itemize}
-\item Led a study of conformal factuality across three benchmarks and multiple model families; introduced informativeness-aware metrics and diagnosed vacuity, retrieval shift, and distractor sensitivity.
-\item Found that lightweight entailment verifiers match or outperform LLM confidence scorers while using under 1\% of the FLOPs. Preprint (2026); ICML workshop (2025).
-\end{itemize}
-\entry{PALIMPSEST --- Efficient Factuality Verification}{2026--present}
-\begin{itemize}
-\item Proposed a masked-diffusion verifier that masks entity spans and scores length-normalized token recovery; designed reference-grounded and reference-free evaluations against trained checkers and token-probability baselines.
-\item Designed a matched cloze comparison of Dream-7B and Qwen2.5-7B to isolate reconstruction-based verification behavior; ongoing work extends the approach to conformal factuality under generator shift.
-\end{itemize}
-
-\section*{Industry Experience}
-\entry{Meta --- Core Ads Growth Engineering}{2026}
-Software Engineer Intern, Machine Learning (Summer 2026)\\
-Part-time Student Researcher (Fall 2026)
-\begin{itemize}
-\item \textbf{Ad Creative Agent (Jun--Jul 2026):} Designed and shipped a production multi-turn, multi-model agent for generating, editing, and iterating on ad creatives from advertiser briefs.
-\item Architected a ReAct orchestrator with seven tools and four specialized advisors, integrating diffusion-based generation and editing, a learned performance scorer, and a vision-language critic.
-\item Built a vision-language-model-as-judge evaluation suite with metrics, dashboards, and mock-based tests; developed supervised fine-tuning, model-serving, and live/mock UI infrastructure.
-\end{itemize}
-
-\newpage
 \section*{Publications}
 \textit{$^\star$ denotes equal contribution.}
 
@@ -156,39 +169,22 @@ Part-time Student Researcher (Fall 2026)
 \textit{International Workshop on Computational Social Choice (COMSOC)}, 2023.
 \end{pubs}
 
-\newpage
-\section*{Selected Research Contributions}
-\entry{Reliable Data Annotation and Pseudolabeling}{2024--2025}
-\begin{itemize}
-\item Co-developed confidence functions and thresholding methods for automated labeling under explicit error constraints; improved coverage by up to 60\% over calibration baselines while holding error below 5\% (NeurIPS 2024).
-\item Connected automated-label quality and quantity through a coverage--error objective, leading to an ICML 2025 publication (equal contribution).
-\end{itemize}
-
-\entry{Human Feedback, Preference Learning, and Pluralistic Alignment}{2023--2025}
-\begin{itemize}
-\item Co-developed PAL, a pluralistic alignment framework that learns shared structure and individual differences from heterogeneous preferences (ICLR 2025).
-\item Studied identifiability and recovery of preference distributions from limited pairwise comparisons (AISTATS 2024), and nonlinear metric learning in reproducing kernel Hilbert spaces (UAI 2025).
-\item Designed crowdsourced studies of cognitive overload and contextual bias to understand how question format changes annotation quality; presented the resulting work as an oral at WWW 2025.
-\item Developed active querying for crowdsourced clustering with theoretical recovery guarantees and evaluation on human-generated data (HCOMP 2023).
-\end{itemize}
-
 \section*{Public Research Artifacts}
-\textbf{Open-source software:} \href{https://github.com/RamyaLab/pluralistic-alignment}{PAL implementation and datasets} (Apache-2.0; ICLR 2025).
+\textbf{Open-source software:} \href{https://github.com/RamyaLab/pluralistic-alignment}{PAL implementation and datasets} (Apache-2.0; ICLR 2025).\\
 \textbf{Public code and data:}
 \href{https://github.com/kitkatdafu/cognitive-overload-contextual-bias}{WWW 2025} (Zenodo),
 \href{https://github.com/ramyakv/Learning-Population-of-Preferences-AISTATS2024}{AISTATS 2024}, and
 \href{https://github.com/kitkatdafu/crowd-active-clustering}{HCOMP 2023}.
 
 \section*{Teaching and Mentoring}
-\textbf{University of Wisconsin--Madison}\\
-Teaching Assistant, ECE 539: Introduction to Artificial Neural Networks\\
-Summer 2025, Fall 2025, Fall 2026
+\entry{University of Wisconsin--Madison}{Summer 2025, Fall 2025, Fall 2026}
+Teaching Assistant, ECE 539: Introduction to Artificial Neural Networks
 \begin{itemize}
 \item Mentored undergraduate researchers on research projects and scientific writing.
 \end{itemize}
 
 \section*{Professional Service}
-\textbf{Conference reviewer:} NeurIPS 2026; COLM 2026; UAI 2026; ICLR 2025, 2026; The Web Conference 2025.\\
+\textbf{Conference reviewer:} NeurIPS 2026; COLM 2026; UAI 2026; ICLR 2025, 2026; WWW 2025.\\
 \textbf{Workshop reviewer:} NeurIPS 2024; ICML 2024.
 
 \section*{Awards and Scholarships}
@@ -200,9 +196,9 @@ Summer 2025, Fall 2025, Fall 2026
 \end{itemize}
 
 \section*{Technical Skills}
-\textbf{Research and evaluation:} Agent and LLM-judge evaluation; conformal prediction and factuality; human feedback and preference learning.\\
-\textbf{Machine learning:} PyTorch, Hugging Face Transformers, JAX, TensorFlow, scikit-learn; supervised fine-tuning and evaluation.\\
+\textbf{Machine learning:} PyTorch, JAX, Hugging Face Transformers, TensorFlow, scikit-learn; supervised fine-tuning and evaluation.\\
 \textbf{Programming:} Python (primary), C/C++, CUDA, Java, JavaScript, Rust, SQL.\\
-\textbf{Systems:} Model serving, Docker, Git, AWS (EC2, S3, Lambda), React, Node.js, MongoDB.
+\textbf{Research and evaluation:} LLM factuality verification and conformal prediction; agent evaluation with LLM and VLM judges; human feedback and preference learning.\\
+\textbf{Systems:} Model serving, Docker, Git, AWS (EC2, S3, Lambda).
 
 \end{document}
