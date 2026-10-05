@@ -1,4 +1,6 @@
 %!TeX program = pdflatex
+% Tailored CV for the 2027--2028 Bloomberg Data Science Ph.D. Fellowship.
+% Kept separate from cv-reid.tex, which the GitHub Action publishes publicly.
 \documentclass[11pt,letterpaper]{article}
 \usepackage[T1]{fontenc}
 \usepackage[USenglish]{babel}
@@ -10,6 +12,7 @@
 \usepackage{fancyhdr}
 \usepackage{needspace}
 \usepackage[hidelinks]{hyperref}
+\urlstyle{same}
 \setlength{\parindent}{0pt}
 \setlength{\parskip}{2pt}
 \titleformat{\section}{\large\bfseries}{}{0pt}{}[\titlerule]
@@ -20,6 +23,7 @@
 \setlist[pubs]{leftmargin=1.7em,label={[\arabic*]},itemsep=5pt,parsep=0pt,topsep=3pt}
 \newcommand{\entry}[2]{\Needspace{4\baselineskip}\textbf{#1}\hfill #2\par}
 \newcommand{\me}{\textbf{Chen, Y.}}
+\newcommand{\earlier}[1]{\\{\small Earlier version: #1}}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small Yi Chen}
@@ -37,8 +41,7 @@
 \hypersetup{
   pdfauthor={Yi Chen},
   pdftitle={Yi Chen: Curriculum Vitae},
-  pdfsubject={Bloomberg Data Science Ph.D. Fellowship},
-  pdfkeywords={trustworthy AI, agent evaluation, LLM judges, retrieval-augmented generation, human feedback, data-centric AI}
+  pdfkeywords={trustworthy AI, conformal prediction, factuality, retrieval-augmented generation, clarifying questions, preference learning}
 }
 
 \begin{document}
@@ -48,13 +51,12 @@
 Ph.D. Candidate in Electrical and Computer Engineering, University of Wisconsin--Madison\\
 Expected graduation: 2028\enspace$\vert$\enspace Advisor: \href{https://ramyakv.github.io/}{Ramya Korlakai Vinayak}\\
 \href{mailto:yi.chen@wisc.edu}{yi.chen@wisc.edu}\enspace$\vert$\enspace
-\href{mailto:reid@deepneural.network}{reid@deepneural.network}\\
 \href{https://www.deepneural.network/}{deepneural.network}\enspace$\vert$\enspace
 \href{https://github.com/kitkatdafu}{github.com/kitkatdafu}\enspace$\vert$\enspace
 \href{https://scholar.google.com/citations?user=QoO6pMEAAAAJ}{Google Scholar}
 
-\section*{Research Focus}
-\textbf{Trustworthy AI for retrieval and agents:} Reliable and efficient evaluation of retrieval-augmented generation (RAG) and agentic systems, including factuality verification, conformal risk control under distribution shift, and LLM judges; human feedback, data-centric learning, and pluralistic alignment.
+\section*{Research Interests}
+\textbf{Trustworthy language models for document question answering and summarization:} conformal factuality and uncertainty quantification for retrieval-augmented generation (RAG) under distribution shift; efficient claim verification; eliciting user intent with few, well-designed questions; learning from heterogeneous human preferences.
 
 \section*{Education}
 \textbf{University of Wisconsin--Madison}
@@ -65,29 +67,6 @@ Expected graduation: 2028\enspace$\vert$\enspace Advisor: \href{https://ramyakv.
 \item B.A., Mathematics \hfill 2019--2022
 \end{itemize}
 
-\section*{Current Research}
-\entry{Conformal Factuality for Retrieval-Augmented Generation (RAG)}{2025--2026}
-\begin{itemize}
-\item Led a study of conformal factuality across three benchmarks and multiple model families; introduced informativeness-aware metrics and diagnosed vacuity, retrieval shift, and distractor sensitivity.
-\item Found that lightweight entailment verifiers match or outperform LLM confidence scorers while using under 1\% of the FLOPs. Preprint (2026); ICML workshop (2025).
-\end{itemize}
-\entry{PALIMPSEST --- Efficient Factuality Verification}{2026--present}
-\begin{itemize}
-\item Proposed a masked-diffusion verifier that masks entity spans and scores length-normalized token recovery; designed reference-grounded and reference-free evaluations against trained checkers and token-probability baselines.
-\item Designed a matched cloze comparison of Dream-7B and Qwen2.5-7B to isolate reconstruction-based verification behavior; ongoing work extends the approach to conformal factuality under generator shift.
-\end{itemize}
-
-\section*{Industry Experience}
-\entry{Meta --- Core Ads Growth Engineering}{2026}
-Software Engineer Intern, Machine Learning (Summer 2026)\\
-Part-time Student Researcher (Fall 2026)
-\begin{itemize}
-\item \textbf{Ad Creative Agent (Jun--Jul 2026):} Designed and shipped a production multi-turn, multi-model agent for generating, editing, and iterating on ad creatives from advertiser briefs.
-\item Architected a ReAct orchestrator with seven tools and four specialized advisors, integrating diffusion-based generation and editing, a learned performance scorer, and a vision-language critic.
-\item Built a vision-language-model-as-judge evaluation suite with metrics, dashboards, and mock-based tests; developed supervised fine-tuning, model-serving, and live/mock UI infrastructure.
-\end{itemize}
-
-\newpage
 \section*{Publications}
 \textit{$^\star$ denotes equal contribution.}
 
@@ -102,15 +81,16 @@ Part-time Student Researcher (Fall 2026)
 \begin{pubs}[resume]
 \item Tatli, G., \me, Mason, B., Nowak, R. D., and Vinayak, R. K.
 \href{https://proceedings.mlr.press/v286/tatli25a.html}{``Metric Learning in an RKHS.''}
-\textit{Uncertainty in Artificial Intelligence (UAI)}, 2025.
+\textit{Conference on Uncertainty in Artificial Intelligence (UAI)}, 2025.
 
-\item Vishwakarma, H.$^\star$, \me$^\star$, Namburi, S. S. S. GNVV, Tay, S. J., Vinayak, R. K., and Sala, F.
+\item Vishwakarma, H.$^\star$, \me$^\star$, Namburi GNVV, S. S. S., Tay, S. J., Vinayak, R. K., and Sala, F.
 \href{https://proceedings.mlr.press/v267/vishwakarma25a.html}{``Rethinking Confidence Scores and Thresholds in Pseudolabeling-based SSL.''}
 \textit{International Conference on Machine Learning (ICML)}, 2025.
 
 \item \me\ and Vinayak, R. K.
 \href{https://doi.org/10.1145/3696410.3714587}{``Query Design for Crowdsourced Clustering: Effect of Cognitive Overload and Contextual Bias.''}
 \textit{The ACM Web Conference (WWW)}, 2025. \textbf{Oral presentation.}
+\earlier{ICML Workshop on Models of Human Feedback for AI Alignment, 2024.}
 
 \item Chen, D., \me, Rege, A., Wang, Z., and Vinayak, R. K.
 \href{https://openreview.net/forum?id=1kFDrYCuSu}{``PAL: Pluralistic Alignment Framework for Learning from Heterogeneous Preferences.''}
@@ -123,10 +103,12 @@ Part-time Student Researcher (Fall 2026)
 \item Tatli, G., \me, and Vinayak, R. K.
 \href{https://proceedings.mlr.press/v238/tatli24a.html}{``Learning Populations of Preferences via Pairwise Comparison Queries.''}
 \textit{International Conference on Artificial Intelligence and Statistics (AISTATS)}, 2024.
+\earlier{ICML MFPL Workshop, 2023.}
 
 \item \me, Vinayak, R. K., and Hassibi, B.
 \href{https://doi.org/10.1609/hcomp.v11i1.27545}{``Crowdsourced Clustering via Active Querying: Practical Algorithm with Theoretical Guarantees.''}
 \textit{AAAI Conference on Human Computation and Crowdsourcing (HCOMP)}, 2023.
+\earlier{ICML AI \& HCI Workshop, 2023.}
 \end{pubs}
 
 \subsection*{Workshop Publications}
@@ -135,74 +117,69 @@ Part-time Student Researcher (Fall 2026)
 \href{https://openreview.net/forum?id=BYVo4s8AcE}{``On the Scoring Functions for RAG-based Conformal Factuality.''}
 \textit{ICML Workshop on Reliable and Responsible Foundation Models}, 2025.
 
-\item Vishwakarma, H., \me, Namburi, S. S. S. GNVV, Tay, S. J., Vinayak, R. K., and Sala, F.
+\item Vishwakarma, H., \me, Namburi GNVV, S. S. S., Tay, S. J., Vinayak, R. K., and Sala, F.
 \href{https://openreview.net/forum?id=2Nd3qXcAnJ}{``PabLO: Improving Semi-Supervised Learning with Pseudolabeling Optimization.''}
 \textit{ICML Workshop on Data-Centric Machine Learning Research}, 2024.
-
-\item \me\ and Vinayak, R. K.
-``Query Design for Crowdsourced Clustering: Effect of Cognitive Overload and Contextual Bias.''
-\textit{ICML Workshop on Models of Human Feedback for AI Alignment}, 2024.
-
-\item Tatli, G., \me, and Vinayak, R. K.
-``Learning Populations of Preferences via Pairwise Comparison Queries.''
-\textit{ICML MFPL Workshop}, 2023.
-
-\item \me, Vinayak, R. K., and Hassibi, B.
-``Crowdsourced Clustering via Active Querying: Practical Algorithm with Theoretical Guarantees.''
-\textit{ICML AI \& HCI Workshop}, 2023.
 
 \item Tatli, G., \me, and Vinayak, R. K.
 ``Learning Preference Distributions From Pairwise Comparisons.''
 \textit{International Workshop on Computational Social Choice (COMSOC)}, 2023.
 \end{pubs}
 
-\newpage
-\section*{Selected Research Contributions}
-\entry{Reliable Data Annotation and Pseudolabeling}{2024--2025}
+\section*{Research Experience}
+\entry{Conformal Factuality for Retrieval-Augmented Generation}{2025--present}
 \begin{itemize}
-\item Co-developed confidence functions and thresholding methods for automated labeling under explicit error constraints; improved coverage by up to 60\% over calibration baselines while holding error below 5\% (NeurIPS 2024).
-\item Connected automated-label quality and quantity through a coverage--error objective, leading to an ICML 2025 publication (equal contribution).
+\item Led a study of conformal factuality for RAG across three benchmarks and multiple model families; introduced informativeness-aware metrics and diagnosed vacuous outputs, sensitivity to retrieval shift, and sensitivity to distractors.
+\item Found that lightweight entailment verifiers match or outperform LLM confidence scorers with over $100\times$ fewer FLOPs (preprint, 2026; ICML workshop, 2025).
+\item Ongoing: claim verification with masked-diffusion language models against trained checkers and token-probability baselines.
+\end{itemize}
+\entry{Human Feedback and Preference Learning}{2023--2025}
+\begin{itemize}
+\item Designed large crowdsourced studies showing how question design trades cognitive overload against contextual bias (WWW 2025, oral); developed active querying with recovery guarantees (HCOMP 2023).
+\item Co-developed PAL, which learns shared structure and individual differences from heterogeneous preferences (ICLR 2025), and theory for learning preference distributions from pairwise comparisons (AISTATS 2024; UAI 2025).
+\item Co-developed confidence functions and jointly designed scores and thresholds for auto-labeling and pseudolabeling under error constraints (NeurIPS 2024; ICML 2025).
 \end{itemize}
 
-\entry{Human Feedback, Preference Learning, and Pluralistic Alignment}{2023--2025}
+\section*{Open-Source Software and Data}
 \begin{itemize}
-\item Co-developed PAL, a pluralistic alignment framework that learns shared structure and individual differences from heterogeneous preferences (ICLR 2025).
-\item Studied identifiability and recovery of preference distributions from limited pairwise comparisons (AISTATS 2024), and nonlinear metric learning in reproducing kernel Hilbert spaces (UAI 2025).
-\item Designed crowdsourced studies of cognitive overload and contextual bias to understand how question format changes annotation quality; presented the resulting work as an oral at WWW 2025.
-\item Developed active querying for crowdsourced clustering with theoretical recovery guarantees and evaluation on human-generated data (HCOMP 2023).
+\item \textbf{PAL} (ICLR 2025): implementation and datasets, Apache-2.0.\\
+\href{https://github.com/RamyaLab/pluralistic-alignment}{\nolinkurl{github.com/RamyaLab/pluralistic-alignment}}
+\item \textbf{Query design} (WWW 2025): code and crowdsourced data, archived on Zenodo.\\
+\href{https://github.com/kitkatdafu/cognitive-overload-contextual-bias}{\nolinkurl{github.com/kitkatdafu/cognitive-overload-contextual-bias}}
+\item \textbf{Populations of preferences} (AISTATS 2024): code and data.\\
+\href{https://github.com/ramyakv/Learning-Population-of-Preferences-AISTATS2024}{\nolinkurl{github.com/ramyakv/Learning-Population-of-Preferences-AISTATS2024}}
+\item \textbf{Active crowdsourced clustering} (HCOMP 2023): code and data.\\
+\href{https://github.com/kitkatdafu/crowd-active-clustering}{\nolinkurl{github.com/kitkatdafu/crowd-active-clustering}}
 \end{itemize}
 
-\section*{Public Research Artifacts}
-\textbf{Open-source software:} \href{https://github.com/RamyaLab/pluralistic-alignment}{PAL implementation and datasets} (Apache-2.0; ICLR 2025).
-\textbf{Public code and data:}
-\href{https://github.com/kitkatdafu/cognitive-overload-contextual-bias}{WWW 2025} (Zenodo),
-\href{https://github.com/ramyakv/Learning-Population-of-Preferences-AISTATS2024}{AISTATS 2024}, and
-\href{https://github.com/kitkatdafu/crowd-active-clustering}{HCOMP 2023}.
+\Needspace{6\baselineskip}
+\section*{Industry Experience}
+\entry{Meta --- Core Ads Growth Engineering}{2026}
+Software Engineer Intern, Machine Learning (Summer 2026)\\
+Part-time Student Researcher (Fall 2026)
+\begin{itemize}
+\item Developed a multi-turn LLM agent for generating and editing ad creatives from advertiser briefs, together with a vision-language-model-as-judge evaluation suite.
+\end{itemize}
 
 \section*{Teaching and Mentoring}
 \textbf{University of Wisconsin--Madison}\\
 Teaching Assistant, ECE 539: Introduction to Artificial Neural Networks\\
-Summer 2025, Fall 2025, Fall 2026
+Summer 2025; Fall 2025, 2026
 \begin{itemize}
 \item Mentored undergraduate researchers on research projects and scientific writing.
 \end{itemize}
 
 \section*{Professional Service}
-\textbf{Conference reviewer:} NeurIPS 2026; COLM 2026; UAI 2026; ICLR 2025, 2026; The Web Conference 2025.\\
+\textbf{Conference reviewer:} NeurIPS 2026; COLM 2026; UAI 2026; ICLR 2025, 2026; WWW 2025.\\
 \textbf{Workshop reviewer:} NeurIPS 2024; ICML 2024.
 
 \section*{Awards and Scholarships}
-\begin{itemize}[label={},leftmargin=0pt]
-\item HCOMP/CI Travel Award, 2023
-\item UW-Madison Conference Presentation Award
-\item UW-Madison Undergraduate Scholarship for Summer Study
-\item James Graaskamp Scholarship
-\end{itemize}
+HCOMP/CI Travel Award, 2023; UW--Madison Conference Presentation Award; UW--Madison Undergraduate Scholarship for Summer Study; James Graaskamp Scholarship.
 
 \section*{Technical Skills}
-\textbf{Research and evaluation:} Agent and LLM-judge evaluation; conformal prediction and factuality; human feedback and preference learning.\\
-\textbf{Machine learning:} PyTorch, Hugging Face Transformers, JAX, TensorFlow, scikit-learn; supervised fine-tuning and evaluation.\\
+\textbf{Research methods:} Conformal prediction and uncertainty quantification; factuality evaluation for RAG; LLM-judge evaluation; human-subject studies and preference learning.\\
+\textbf{Machine learning:} PyTorch, Hugging Face Transformers, JAX, TensorFlow, scikit-learn; supervised fine-tuning, model serving.\\
 \textbf{Programming:} Python (primary), C/C++, CUDA, Java, JavaScript, Rust, SQL.\\
-\textbf{Systems:} Model serving, Docker, Git, AWS (EC2, S3, Lambda), React, Node.js, MongoDB.
+\textbf{Systems:} Docker, Git, AWS (EC2, S3, Lambda); React, Node.js and MongoDB for crowdsourcing interfaces.
 
 \end{document}
